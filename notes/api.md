@@ -129,8 +129,3 @@ Content-Type: application/json
 - **Insomnia**: A REST client for testing APIs, similar to Postman.
 
 ---
-
-### 🚀 **How to Use This in a GitHub Repo**
-📂 Save this file as `API-Overview.txt` in your repository to document API usage and guidelines.
-
----
