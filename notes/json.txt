@@ -1,15 +1,16 @@
-# 🌐 JSON (JavaScript Object Notation) Overview
+🌐 JSON (JavaScript Object Notation) Overview
+🔹 What is JSON?
+JSON (JavaScript Object Notation) is a lightweight data-interchange format that is easy for humans to read and write, and easy for machines to parse and generate. It is often used to represent data structures like objects and arrays.
 
-## 🔹 What is JSON?
-**JSON (JavaScript Object Notation)** is a lightweight data-interchange format that is easy for humans to read and write, and easy for machines to parse and generate. It is often used to represent data structures like **objects** and **arrays**.
-
-## 🔹 JSON Structure:
+🔹 JSON Structure:
 JSON data consists of two main structures:
-1. **Objects**: A collection of key/value pairs enclosed in `{}`.
-2. **Arrays**: A collection of values enclosed in `[]`.
 
-### Example JSON Object:
-```json
+Objects: A collection of key/value pairs enclosed in {}.
+Arrays: A collection of values enclosed in [].
+Example JSON Object:
+json
+Copy
+Edit
 {
     "id": 1,
     "author": "youssef",
