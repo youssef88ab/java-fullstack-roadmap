@@ -4,11 +4,15 @@ import lombok.Data;
 
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 
 @Component
+@Entity
 public class Product 
 {
+    @Id
     private int productID;
     private String productName;
     private double price ; 
