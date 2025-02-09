@@ -42,7 +42,7 @@ public class SecurityConfig {
 
     */
 
-    /* 
+
 
     @Bean
     public UserDetailsService userDetailsService() {
@@ -68,5 +68,4 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder(); // Use BCrypt for password encoding
     }
 
-    */
 }
