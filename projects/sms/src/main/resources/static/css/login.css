@@ -1,0 +1,68 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto", serif;
+}
+
+img {
+    width: 10%;
+    padding: 10px;
+}
+
+body {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full viewport height */
+    margin: 0;
+    background: linear-gradient(to right, #667eea, #764ba2);
+}
+
+.logins {
+    display: flex;
+    gap: 20px; /* Space between the two divs */
+    justify-content: center;
+    align-items: center;
+}
+
+.admin-space, .student-space {
+    width: fit-content ;
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    text-transform: capitalize;
+}
+
+.admin-space, .student-space {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.admin-space:hover, .student-space:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.admin-space i, .student-space i {
+    color: #007bff; /* Icon color */
+}
+
+#role-icon {
+    margin: 10px 0 ;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: black;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+.btn:hover {
+    background: gray;
+}

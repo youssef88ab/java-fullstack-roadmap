@@ -1,37 +1,37 @@
 [
     {
-        "id" : 1 , 
-        "author" : "youssef" , 
-        "category" : "tech" , 
-        "title" : "Deep Seek Ai" , 
-        "content" : "Deep ..."
+        "id": 1,
+        "author": "youssef",
+        "category": "tech",
+        "title": "Deep Seek AI",
+        "content": "Deep ..."
     },
     {
-        "id" : 2 , 
-        "author" : "youssef" , 
-        "category" : "tech" , 
-        "title" : "Deep Seek Ai" , 
-        "content" : "Deep ..."
+        "id": 2,
+        "author": "youssef",
+        "category": "tech",
+        "title": "AI Advancements",
+        "content": "Latest AI breakthroughs..."
     },
     {
-        "id" : 1 , 
-        "author" : "youssef" , 
-        "category" : "tech" , 
-        "title" : "Deep Seek Ai" , 
-        "content" : "Deep ..."
+        "id": 3,
+        "author": "youssef",
+        "category": "tech",
+        "title": "Quantum Computing",
+        "content": "Exploring quantum tech..."
     },
     {
-        "id" : 1 , 
-        "author" : "youssef" , 
-        "category" : "tech" , 
-        "title" : "Deep Seek Ai" , 
-        "content" : "Deep ..."
+        "id": 4,
+        "author": "youssef",
+        "category": "tech",
+        "title": "Cybersecurity Trends",
+        "content": "How to stay safe online..."
     },
     {
-        "id" : 1 , 
-        "author" : "youssef" , 
-        "category" : "tech" , 
-        "title" : "Deep Seek Ai" , 
-        "content" : "Deep ..."
+        "id": 5,
+        "author": "youssef",
+        "category": "tech",
+        "title": "Blockchain Revolution",
+        "content": "Decentralization and its impact..."
     }
 ]

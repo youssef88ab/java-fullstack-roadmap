@@ -1,0 +1,59 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #222831;
+}
+
+#add-student-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30%;
+    margin: 12vh auto ;
+    padding: 25px;
+    border: solid 1px black;
+    border-radius: 10px;
+    background-color: #EEEEEE;
+}
+
+#page-title {
+    border-bottom: solid 2px black;
+    width: fit-content;
+    margin: auto ;
+    margin-bottom: 20px;
+}
+
+label {
+    text-transform: capitalize;
+    font-size: 20px;
+    margin: 0px 10px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    border-radius: 8px;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px;
+    border: solid 1px #00ADB5;
+    background-color: #00ADB5;
+    color: white;
+    font-size: large;
+    border-radius: 10px;
+}
+
+#page-title {
+    text-align: center ;
+}
