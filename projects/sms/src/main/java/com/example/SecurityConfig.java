@@ -17,18 +17,16 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
 
-    /* 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests((requests) -> requests
                 .requestMatchers("/", "/login", "/logout").permitAll() // Ensure login/logout are accessible
-                .requestMatchers("/students").hasRole("STUDENT") // Only students can access /students
-                .requestMatchers("/admin").hasRole("ADMIN") // Only admins can access /admin
+                .requestMatchers("/students/**").hasRole("STUDENT") // Require STUDENT role for student endpoints
+                .requestMatchers("/admin/**").hasRole("ADMIN") // Require ADMIN role for admin endpoints
                 .anyRequest().authenticated() // All other endpoints require authentication
             )
             .formLogin((form) -> form
-                .loginPage("/login") // Custom login page
                 .defaultSuccessUrl("/", true) // Redirect to home after successful login
                 .permitAll()
             )
@@ -39,10 +37,6 @@ public class SecurityConfig {
 
         return http.build();
     }
-
-    */
-
-
 
     @Bean
     public UserDetailsService userDetailsService() {

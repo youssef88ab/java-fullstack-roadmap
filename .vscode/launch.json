@@ -2,11 +2,47 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Application",
+            "request": "launch",
+            "mainClass": "com.example.Application",
+            "projectName": "Basic.Authentication"
+        },
+        {
+            "type": "java",
+            "name": "Application",
+            "request": "launch",
+            "mainClass": "com.example.Basic.Authentication.Application"
+        },
+        {
+            "type": "java",
+            "name": "SpringSecurityJdbcApplication",
+            "request": "launch",
+            "mainClass": "com.example.SpringSecurityJdbcApplication",
+            "projectName": "spring-security-jdbc"
+        },
+        {
+            "type": "java",
+            "name": "SpringSecurityJdbcApplication",
+            "request": "launch",
+            "mainClass": "com.example.spring_security_jdbc.SpringSecurityJdbcApplication"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-SmsApplication<com.example-sms>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
             "mainClass": "com.example.SmsApplication",
             "projectName": "com.example-sms",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-Application<Basic.Authentication>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.Basic.Authentication.Application",
+            "projectName": "Basic.Authentication",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
         }

@@ -53,7 +53,7 @@
 
             // Fetch and display all students initially
             function fetchStudents() {
-                fetch("http://localhost:9091/students")
+                fetch("http://localhost:9091/api/students")
                     .then(response => response.json())
                     .then(data => displayStudents(data))
                     .catch(error => console.error("Error fetching students:", error));
@@ -67,7 +67,7 @@
                     return;
                 }
 
-                fetch(`http://localhost:9091/students/search?keyword=${keyword}`)
+                fetch(`http://localhost:9091/api/students/search?keyword=${keyword}`)
                     .then(response => response.json())
                     .then(data => displayStudents(data))
                     .catch(error => console.error("Error searching students:", error));
@@ -95,7 +95,7 @@
             // Delete student
             function deleteStudent(id) {
                 if (confirm("Are you sure you want to delete this student?")) {
-                    fetch(`http://localhost:9091/students/delete/${id}`, { method: "DELETE" })
+                    fetch(`http://localhost:9091/api/students/delete/${id}`, { method: "DELETE" })
                         .then(response => {
                             if (response.ok) {
                                 alert("Student deleted successfully!");
