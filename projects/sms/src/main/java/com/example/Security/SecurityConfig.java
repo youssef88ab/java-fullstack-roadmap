@@ -1,4 +1,6 @@
-package com.example;
+package com.example.Security;
+
+import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,13 +13,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -40,29 +41,15 @@ public class SecurityConfig {
     }
 
     @Bean
-    public UserDetailsService userDetailsService() {
-        UserDetails student = User.builder()
-            .username("student")
-            .password(passwordEncoder().encode("student")) // Encode password
-            .roles("STUDENT") // Assign role
-            .build();
-
-        UserDetails admin = User.builder()
-            .username("admin")
-            .password(passwordEncoder().encode("admin")) // Encode password
-            .roles("ADMIN") // Assign role
-            .build();
-
-        System.out.println("Users created: student and admin");
-
-        return new InMemoryUserDetailsManager(student, admin);
+    public JdbcUserDetailsManager userDetailsManager(DataSource dataSource) {
+        JdbcUserDetailsManager manager = new JdbcUserDetailsManager(dataSource);
+        manager.setUsersByUsernameQuery("SELECT username , password , enabled FROM USERS WHERE USERNAME = ?");
+        manager.setAuthoritiesByUsernameQuery("SELECT username , authority FROM authorities WHERE username = ?");
+        return manager ;
     }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
         return NoOpPasswordEncoder.getInstance(); // Use BCrypt for password encoding
     }
-
-
-
 }
