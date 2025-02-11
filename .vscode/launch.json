@@ -45,6 +45,26 @@
             "projectName": "Basic.Authentication",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-SmsApplication<sms>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.SmsApplication",
+            "projectName": "sms",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-Application<JDBC.Authentication>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.Application",
+            "projectName": "JDBC.Authentication",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
