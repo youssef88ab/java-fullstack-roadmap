@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -15,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -24,12 +26,12 @@ public class SecurityConfig {
         http
             .authorizeHttpRequests((requests) -> requests
                 .requestMatchers("/", "/login", "/logout").permitAll() // Ensure login/logout are accessible
-                .requestMatchers("/students/**").hasRole("STUDENT") // Require STUDENT role for student endpoints
+                .requestMatchers("/student/**").hasRole("STUDENT") // Require STUDENT role for student endpoints
                 .requestMatchers("/admin/**").hasRole("ADMIN") // Require ADMIN role for admin endpoints
                 .anyRequest().authenticated() // All other endpoints require authentication
             )
             .formLogin((form) -> form
-                .defaultSuccessUrl("/", true) // Redirect to home after successful login
+                .successHandler(customSuccessHandler())
                 .permitAll()
             )
             .logout((logout) -> logout
@@ -38,6 +40,19 @@ public class SecurityConfig {
             );
 
         return http.build();
+    }
+
+    @Bean
+    public AuthenticationSuccessHandler customSuccessHandler() {
+        return (request, response, authentication) -> {
+            var authorities = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
+            
+            if (authorities.contains("ROLE_ADMIN")) {
+                response.sendRedirect("/admin/students/"); // Redirect admins
+            } else {
+                response.sendRedirect("/student/"); // Redirect normal users
+            }
+        };
     }
 
     @Bean
