@@ -1,0 +1,112 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container {
+        padding: 10px;
+        border: solid 1px black;
+        margin: 0px 10px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 10px;
+        text-align: center;
+        width: 50%;
+    }
+
+    .container #title {
+        text-align:center;
+    }
+
+    .container #content {
+        border: solid 1px black;
+        border-radius: 5px;
+        padding: 10px;
+        background-color: #eee;
+    }
+
+
+    .colors button{
+        padding: 10px;
+        border: solid 1px black;
+        border-radius: 5px ;
+    }
+
+    .colors #red-btn {
+        color: red;
+        background-color: red;
+    }
+
+    .colors #green-btn {
+        color: green;
+        background-color: green;
+    }
+
+    .colors #blue-btn {
+        color: blue;
+        background-color: blue;
+    }
+
+    .colors #yellow-btn {
+        color: yellow;
+        background-color: yellow;
+    }
+
+    .colors #pink-btn {
+        color: pink;
+        background-color: pink;
+    }
+
+    .colors #purple-btn {
+        color: purple;
+        background-color: purple;
+    }
+
+    .colors #orange-btn {
+        color: orange;
+        background-color: orange;
+    }
+
+</style>
+<body>
+    <div class="container">
+        <h2 id="title">Content Color Changer</h2>
+        <p id="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat neque, dolore reiciendis praesentium dolor vero totam expedita. Quisquam ipsa, earum reprehenderit voluptate labore fugit aliquam sed ab, asperiores, quidem commodi.</p>
+        <h3>Chose Color</h3>
+        <div class="colors">
+            <button id="red-btn" onclick="changeTextColor('red')">R</button>
+            <button id="green-btn" onclick="changeTextColor('green')">G</button>
+            <button id="blue-btn" onclick="changeTextColor('blue')">B</button>
+            <button id="yellow-btn" onclick="changeTextColor('yellow')">R</button>
+            <button id="orange-btn" onclick="changeTextColor('orange')">G</button>
+            <button id="pink-btn" onclick="changeTextColor('pink')">B</button>
+            <button id="purple-btn" onclick="changeTextColor('purple')">R</button>
+        </div>
+    </div>
+
+    <script>
+        function changeTextColor(color) {
+            var content = document.getElementById('content'); 
+            content.style.color = color ;
+        }
+
+    </script>
+</body>
+</html>
