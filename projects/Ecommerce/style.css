@@ -1,6 +1,7 @@
 body {
     font-family: 'Roboto' , sans-serif;
-    background: #f5f7fa;
+    background: #a7caff;
+
 }
 
 /* Start SideBar */
@@ -38,7 +39,7 @@ body {
 
 .content {
     margin-left: 250px; /* Match the sidebar width */
-    background: #fff;
+    background-color: #f6fbfe;
     min-height: 100vh;
 }
 
@@ -48,7 +49,7 @@ body {
 }
 
 .navbar .form-control {
-    width: 300px; /* Adjust search bar width */
+    width: 100%; /* Adjust search bar width */
 }
 
 /* Notifications and User Profile Styles */
@@ -89,6 +90,11 @@ body {
     display: none !important;
 }
 
+.nav-link .icon {
+    font-size: 24px;
+    color: #414141;
+}
+
 /* Profile Image Styles */
 .profile-img {
     width: 40px; /* Adjust the size of the image */
@@ -105,4 +111,48 @@ body {
 }
 
 /* End Contetn */
+
+
+/* Welcome Card */
+.card {
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    height: 100%;
+}
+
+#sale-icon {
+    background-color: #fe6868;
+    color: white;
+    font-size: 20px;
+}
+
+#money-icon {
+    background-color: #1e8716;
+    color: white;
+    font-size: 20px;
+}
+
+#order-icon {
+    background-color: rgb(154, 35, 154);
+    color: white;
+    font-size: 20px;
+}
+
+#item-icon {
+    background-color: #d6a95b;
+    color: white;
+    font-size: 20px;
+}
+
+
+
+/* Placeholder for Charts */
+.chart {
+    height: 60px;
+    background: radial-gradient(circle, #f5f5f5 40%, transparent 60%);
+}
+
+.bar-chart {
+    background: linear-gradient(to right, #007bff 30%, transparent 100%);
+}
 
