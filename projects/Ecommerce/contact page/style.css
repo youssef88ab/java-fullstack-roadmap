@@ -1,0 +1,109 @@
+:root {
+    --primary-color: #54359d;
+    --secondary-color: #f1c50e;
+    --tertiary-color: #f2f2f2;
+    --quaternary-color: #e5e5e5;
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+}
+
+body {
+    height: 100vh;
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+
+.left-side {
+    background-color:  var(--primary-color);
+    height: 100vh;
+}
+
+.left-side-container {
+    margin: 0px 60px;
+    margin-top: 20px;
+    position: relative;
+}
+
+.info .title {
+    margin-bottom: 4px; /* Reduce space between title and description */
+}
+
+.info .description {
+
+    line-height: 0.5; /* Reduce space between lines */
+}
+
+
+#email {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+p {
+    font-size: 14px;
+}
+
+i {
+    color: white;
+}
+
+.icons {
+    font-size: 14px;
+    position: absolute;
+}
+
+
+
+.right-side {
+    height: 100vh;
+}
+
+label {
+    font-size: 14px;
+}
+
+.right-side-container {
+    margin: 0px 40px;
+    margin-top: 20px;
+}
+
+::placeholder {
+    font-size: 14px;
+}
+
+input , textarea {
+    font-size: 14px;
+    background-color: var(--quaternary-color);
+    border: solid 0.5px var(--tertiary-color);
+    border-radius: 5px;
+    outline: none;
+
+}
+
+input[type="submit"] {
+    background-color: var(--secondary-color);
+    color:  var(--primary-color);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+button {
+    border: none;
+}
+
+.right-side #email
+{
+    color: var(--primary-color);
+    text-decoration: underline;
+}
