@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "EcommerceApplication",
+            "request": "launch",
+            "mainClass": "com.ecommerce.ecommerce.EcommerceApplication",
+            "projectName": "ecommerce"
+        },
+        {
+            "type": "java",
             "name": "Application",
             "request": "launch",
             "mainClass": "com.example.Application",
