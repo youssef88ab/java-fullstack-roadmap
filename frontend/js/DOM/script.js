@@ -128,3 +128,89 @@ console.log(checkattributes.firstChild);
 console.log(checkattributes.lastChild);
 console.log(checkattributes.firstElementChild);
 console.log(checkattributes.lastElementChild);
+
+
+/* DOM [Events] */
+
+let btn = document.getElementById("event-btn"); 
+btn.onclick = function() {
+    console.log("Button Clicked");
+}
+
+let btn2 = document.getElementById("event-btn"); 
+btn.oncontextmenu = function() {
+    console.log("Button Right Clicked");
+}
+
+let btn3 = document.getElementById("event-btn"); 
+btn.onmouseover = function() {
+    console.log("Button Houvred");
+}
+
+let btn4 = document.getElementById("event-btn"); 
+btn.onmouseenter = function() {
+    console.log("Button Entred");
+}
+
+let btn5 = document.getElementById("event-btn"); 
+btn.onmouseleave = function() {
+    console.log("Button Leaved");
+}
+
+window.onscroll = function() {
+    console.log("Scrolling");
+}
+
+window.onresize = function() {
+    console.log("Resizing");
+}
+
+document.links[0].onclick = function(event) {
+    console.log(event); 
+    event.preventDefault();
+}
+
+/* Dom [Event Simulation] 
+    -- click
+    -- focus
+    -- blur
+*/
+
+let input = document.getElementById("input");
+window.onload = function() {
+    // input.focus();
+}
+
+/* 
+    DOM [Class List]
+    -- ClassList
+    --- length
+    --- contains
+    --- item(index)
+    --- add
+    --- remove
+    --- toggle (of class exist it remove it if not it add it)
+*/
+
+let element = document.getElementById("my-div"); 
+console.log(element.classList.contains("one"));
+console.log(element.classList.item(0));
+console.log(element.classList.add("five"));
+console.log(element.classList);
+console.log(element.classList.remove("five"));
+console.log(element.classList);
+
+
+/* 
+    Dom [Css]
+    - style
+    - removeProperty(propertyName)
+    - setProperty(PropertyName , value , priority)
+*/
+
+let btn6 = document.getElementById("event-btn");
+btn6.style.color = "red"; 
+btn6.style.margin = "10px";
+btn6.style.padding = "10px";
+btn6.style.borderRadius = "8px";
+btn6.style.border = "solid 1px black";

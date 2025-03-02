@@ -3,7 +3,7 @@
     color: red;
 }
 
-.check-attributes , .create-elements , .products{
+.check-attributes , .create-elements , .products , .dom-events{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,4 +26,3 @@
 #my-Paragraph {
     text-align: center;
 }
-
