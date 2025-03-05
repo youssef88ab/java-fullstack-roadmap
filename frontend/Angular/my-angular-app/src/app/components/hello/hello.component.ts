@@ -1,18 +1,35 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-hello',
-  imports: [],
   templateUrl: './hello.component.html',
-  styleUrl: './hello.component.css'
+  imports: [FormsModule , CommonModule], 
+  styleUrls: ['./hello.component.css']
 })
+
+
 export class HelloComponent {
-  message: string = "Hello , Angular";
+  message: string = "Hello, Angular";
+  imageUrl: string = "https://angular.io/assets/images/logos/angular/angular.png"; 
+  name: string = "" ;
+  isLogging: boolean = false;
 
-  isVisible = true ;
-
-  toggleVisibility() {
-    this.isVisible = !this.isVisible;
+  showMessage() {
+    alert("Hello From Angular");
   }
 
+  isActive: boolean = true ;
+
+  users: string[] = ['Alice', 'Bob', 'Charlie'];
+
+  status: string = "Pending";
+
+  user = {email: '' , password: ''};
+
+  login() {
+    console.log(this.user);
+  }
 }

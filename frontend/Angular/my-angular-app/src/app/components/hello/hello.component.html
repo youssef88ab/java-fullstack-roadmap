@@ -1,3 +1,29 @@
-<p>{{ message }}</p>
-<button (click)="toggleVisibility()">Click Me</button>
-<p *ngIf="isVisible">The Text Is isVisible</p>
+<h2 [ngClass]="{ 'active-text' : isActive ,'inactive-text' : !isActive }">Welcome to My First Angular Component!</h2>
+<p>This is my first custom component.</p>
+<input [(ngModel)]="name" placeholder="Enter Your Name">
+<p>This Is My Name {{name}}</p>
+<button (click)="showMessage()">Click Me</button>
+<button (click)="isLogging = !isLogging">Toggle Loggins</button>
+<p *ngIf="isLogging">Welcome Back</p>
+<p *ngIf="!isLogging">Please Logging</p>
+<ul>
+    <li *ngFor="let user of users">{{ user }}</li>
+</ul>
+<button (click)="isActive = !isActive">Toggle Style</button>
+<p [ngSwitch]="status">
+    <span *ngSwitchCase="'approved'">✅ Approved</span>
+    <span *ngSwitchCase="'Rejected'">❌ Rejected</span>
+    <span *ngSwitchDefault>⌛ Pending</span>
+</p>
+<img [src]="imageUrl" alt="Angular Logo" width="100">
+<form (ngSubmit)="login()">
+    <label for="Email">Email</label>
+    <input type="email" [(ngModel)]="user.email" name="email" id="email" required="">
+
+    <label for="Password">Password</label>
+    <input type="password" [(ngModel)]="user.password" name="password" id="" required>
+    <button type="submit">Login</button>
+</form>
+
+<p>Entered Email: {{ user.email }}</p>
+<p>Entered Password: {{ user.password }}</p>

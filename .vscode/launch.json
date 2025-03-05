@@ -4,8 +4,23 @@
             "type": "java",
             "name": "EcommerceApplication",
             "request": "launch",
-            "mainClass": "com.ecommerce.ecommerce.EcommerceApplication",
+            "mainClass": "com.ecommerce.EcommerceApplication",
             "projectName": "ecommerce"
+        },
+        {
+            "type": "java",
+            "name": "Solution",
+            "request": "launch",
+            "mainClass": "Solution",
+            "projectName": ""
+        },
+        {
+            "type": "java",
+            "name": "EcommerceApplication",
+            "request": "launch",
+            "mainClass": "com.ecommerce.ecommerce.EcommerceApplication",
+            "projectName": "ecommerce",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=52953 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=ecommerce"
         },
         {
             "type": "java",
