@@ -1,15 +1,8 @@
-:root {
-    --primary-color: #54359d;
-    --secondary-color: #f1c50e;
-    --tertiary-color: #f2f2f2;
-    --quaternary-color: #e5e5e5;
-}
-
-
 * {
     padding: 0;
     margin: 0;
     text-decoration: none;
+    box-sizing: border-box;
 }
 
 body {
@@ -20,9 +13,8 @@ html, body {
     overflow-x: hidden;
 }
 
-
 .left-side {
-    background-color:  var(--primary-color);
+    background-color: #54359d; /* Primary color */
     height: 100vh;
 }
 
@@ -33,18 +25,29 @@ html, body {
 }
 
 .info .title {
-    margin-bottom: 4px; /* Reduce space between title and description */
+    margin-bottom: 4px;
 }
 
 .info .description {
+    line-height: 1.2; /* Better readability */
+}
 
-    line-height: 0.5; /* Reduce space between lines */
+.icons a {
+    margin-right: 20px; /* Space between icons */
+}
+
+.icons i {
+    color: white;
+    transition: color 0.3s ease-in-out;
+}
+
+.icons i:hover {
+    color: #f1c50e; /* Change color on hover */
 }
 
 
 #email {
-    color: var(--secondary-color);
-    text-decoration: none;
+    color: #f1c50e; /* Secondary color */
 }
 
 p {
@@ -54,13 +57,6 @@ p {
 i {
     color: white;
 }
-
-.icons {
-    font-size: 14px;
-    position: absolute;
-}
-
-
 
 .right-side {
     height: 100vh;
@@ -79,31 +75,34 @@ label {
     font-size: 14px;
 }
 
-input , textarea {
+input, textarea {
     font-size: 14px;
-    background-color: var(--quaternary-color);
-    border: solid 0.5px var(--tertiary-color);
+    background-color: #e5e5e5;
+    border: solid 0.5px #f2f2f2;
     border-radius: 5px;
     outline: none;
-
+    width: 100%; /* Ensures full width */
+    padding: 10px;
 }
 
 input[type="submit"] {
-    background-color: var(--secondary-color);
-    color:  var(--primary-color);
+    background-color: #f1c50e;
+    color: #54359d;
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
     font-size: 16px;
     font-weight: bold;
+    cursor: pointer;
+    width: 100%;
 }
 
 button {
     border: none;
+    background: none;
 }
 
-.right-side #email
-{
-    color: var(--primary-color);
+.right-side #email {
+    color: #54359d;
     text-decoration: underline;
 }
