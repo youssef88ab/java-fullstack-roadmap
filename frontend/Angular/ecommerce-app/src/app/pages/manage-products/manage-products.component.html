@@ -1,1 +1,99 @@
-<p>manage-products works!</p>
+<!-- emart.component.html -->
+<div class="main d-flex">
+ <app-sidebar></app-sidebar>
+  <main class="content flex-grow-1">
+    <!-- Content Navigation Bar -->
+    <nav class="navbar navbar-light bg-light shadow-sm d-flex align-items-center">
+      <div class="container-fluid d-flex align-items-center">
+        <!-- Title -->
+        <h5 class="d-flex justify-content-center align-items-center">Product Management</h5>
+        <!-- Notifications and User Profile -->
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item d-flex align-items-center">
+            <a class="nav-link" href="javascript:void(0)">
+              <i class="fa-solid fa-moon icon"></i>
+            </a>
+            <a class="nav-link" href="javascript:void(0)">
+              <i class="fa-regular fa-bell icon"></i>
+            </a>
+            <a class="nav-link" href="javascript:void(0)">
+              <img class="profile-img" src="assets/images/profile.png" alt="Profile Image" />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card p-3 rounded-0">
+          <nav class="navbar border-none mb-4 d-flex flex-row align-items-center p-2 border-0">
+            <form class="d-flex justify-content-center align-items-center">
+              <input 
+                class="form-control me-2 p-2" 
+                type="search" 
+                placeholder="Search" 
+                aria-label="Search" />
+              <button class="btn btn-outline-success p-2" type="submit">
+                Search
+              </button>
+            </form>
+            <button class="border-none p-2 rounded ">
+              <i class="fa-solid fa-upload"></i> Upload
+            </button>
+            <button class="border-none p-2 rounded">
+              <i class="fa-solid fa-file-export"></i> Export
+            </button>
+            <select class="filter p-2 rounded">
+              <option value="all">All Categories</option>
+              <option value="electronics">Electronics</option>
+              <option value="clothing">Clothing</option>
+            </select>
+            <select class="filter p-2 rounded">
+              <option value="all">All Prices</option>
+              <option value="low">Low to High</option>
+              <option value="high">High to Low</option>
+            </select>
+            <a routerLink="/add-product"><button class="add-product-btn p-2">+ Add Product</button></a> 
+          </nav>
+          <table class="product-table">
+            <thead class="border-bottom-1">
+              <tr class="border-bottom-1">
+                <th>Image</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Stock Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of products">
+                <td>
+                  <img [src]="product.imageUrl" alt="Smartphone X" class="product-image" />
+                </td>
+                <td>{{ product.name }}</td>
+                <td>Category</td>
+                <td>{{ product.price }}</td>
+                <td>
+                  <span class="badge bg-success p-2 w-75">In Stock</span>
+                </td>
+                <td>
+                  <div class="action-buttons d-flex align-items-center justify-content-around">
+                    <a [routerLink]="['/edit-product', product.productId]">
+                      <button class="btn btn-secondary p-2 fs-6">
+                      <i class="fa-solid fa-edit"></i> Edit
+                    </button>
+                    </a>
+                    <button class="btn btn-sm btn-danger p-2 fs-6 " title="Delete Product" (click)="deleteProduct(product.productId)">
+                      <i class="fa-solid fa-trash"></i> Delete
+                    </button>                    
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

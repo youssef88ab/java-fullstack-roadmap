@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ecommerce.model.Product;
-import com.ecommerce.product.service.ProductService;
+import com.ecommerce.service.ProductService;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
-@CrossOrigin(origins = "http://127.0.0.1:5500") // Autoriser les requêtes depuis le frontend
+@CrossOrigin(origins = "*") // Autoriser les requêtes depuis le frontend
 @RequestMapping("/products")
 public class ProductController {
 
@@ -31,7 +31,7 @@ public class ProductController {
     private ProductService productService;
 
     // Récupérer tous les produits
-    @GetMapping("/all")
+    @GetMapping()
     public ResponseEntity<List<Product>> getProducts() {
         List<Product> products = productService.getAllProducts();
         return new ResponseEntity<>(products, HttpStatus.OK);

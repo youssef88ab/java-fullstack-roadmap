@@ -1,0 +1,27 @@
+<div class="d-flex">
+    <!-- Sidebar -->
+    <app-sidebar></app-sidebar>
+    <main class="content flex-grow-1">
+        <!-- Content Navigation Bar -->
+        <app-navbar></app-navbar>
+        <div class="card p-3 rounded-0 h-auto">   
+            <form action="" class="row d-flex flex-row product-form" id="add-product-form">
+                <div class="col-lg-6 image-container img-fluid">
+                    <img src="assets/images/product1.png" alt="" id="product-image">
+                </div>
+                <div class="col-lg-6 d-flex flex-column justify-content-start gap-3">
+                    <label for="Name" >Name:</label>
+                    <input class="p-2" type="text" name="" id="name-input" [(ngModel)]="newProduct.name" required>
+                    <label for="Name">description:</label>
+                    <textarea class="p-2" type="text" name="" id="description" [(ngModel)]="newProduct.description"></textarea>
+                    <label for="Name">Price:</label>
+                    <input class="p-2" type="number" name="" id="price-input" [(ngModel)]="newProduct.price">
+                    <div class="buttons d-flex flex-row justify-content-between gap-1">
+                        <input type="reset"  name="" id="reset-btn"  value="cancel" class="p-2 w-100">
+                        <input type="submit" name="" id="submit-btn" value="Add"    class="p-2 w-100" >
+                    </div>
+                </div>
+            </form>
+        </div>
+     </main>
+</div>

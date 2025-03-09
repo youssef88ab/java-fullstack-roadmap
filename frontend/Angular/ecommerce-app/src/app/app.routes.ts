@@ -6,6 +6,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { ProductsComponent } from './pages/products/products.component';
+import { AddProductComponent } from './pages/add-product/add-product.component';
+import { EditProductComponent } from './pages/edit-product/edit-product.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -15,5 +17,7 @@ export const routes: Routes = [
   { path: 'manage-products', component: ManageProductsComponent } , 
   { path: 'cart' , component: CartComponent } , 
   { path: 'checkout' , component: CheckoutComponent} , 
-  { path: 'products' , component: ProductsComponent}
+  { path: 'products' , component: ProductsComponent} , 
+  { path: 'add-product' , component: AddProductComponent} , 
+  { path: 'edit-product/:productId' , component: EditProductComponent}
 ];

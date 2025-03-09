@@ -1,7 +1,179 @@
-<nav>
-    <a routerLink="/dashboard">Dashboard</a>
-    <a routerLink="/manage-products">Manage Products</a>
-    <a routerLink="/contact-us">Contact Us</a>
-  </nav>
-  
-<p>dashboard works!</p>
+<div class="d-flex">
+  <app-sidebar></app-sidebar>
+  <!-- Main Content -->
+  <main class="content flex-grow-1">
+    <!-- Content Navigation Bar -->
+    <app-navbar></app-navbar>
+
+    <!-- Main Content Area -->
+    <div class="dashboard">
+      <div class="container mt-4">
+        <div class="row">
+          <!-- Welcome Card -->
+          <div class="col-lg-6">
+            <div class="card d-flex flex-row h-100">
+              <div class="ps-4 pb-3 pt-3 d-flex flex-column align-items-start justify-content-between">
+                <div class="me-3 mb-3 d-flex justify-content-between align-items-center">
+                  <img src="assets/images/profile.png" alt="User Image" class="rounded-circle me-2" width="50" />
+                  <h6 class="mb-1 fw-bold">Welcome back Mathew Anderson!</h6>
+                </div>
+                <div class="d-flex mt-2">
+                  <div class="me-4">
+                    <h4 class="mb-0 fw-bold">$2,763 <span class="text-success">↑</span></h4>
+                    <p class="text-muted small">Today's Sales</p>
+                  </div>
+                  <div class="border-end mx-3" style="height: 50px"></div>
+                  <div>
+                    <h4 class="mb-0 fw-bold">39% <span class="text-success">↑</span></h4>
+                    <p class="text-muted small">Overall Performance</p>
+                  </div>
+                </div>
+              </div>
+              <div class="ms-auto">
+                <img src="assets/images/businessman.png" alt="Illustration" width="120" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Expense & Sales Cards -->
+          <div class="col-lg-6">
+            <div class="row mb-2">
+              <!-- Total Sales Card -->
+              <div class="col-6">
+                <div class="card p-3 h-100 d-flex justify-content-start align-items-center">
+                  <div class="d-flex align-items-center w-100">
+                    <a href="#" class="d-flex justify-content-center align-items-center rounded-circle bg-light">
+                      <i class="fa-solid fa-shopping-cart p-3 rounded-circle" id="sale-icon"></i>
+                    </a>
+                    <div class="d-flex flex-column ms-3">
+                      <h6 class="fw-bold mb-1">Total Sales</h6>
+                      <h6 class="mb-0 fw-bold">$2,763</h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Total Orders Card -->
+              <div class="col-6">
+                <div class="card p-3 h-100 d-flex justify-content-start align-items-center">
+                  <div class="d-flex align-items-center w-100">
+                    <a href="#" class="d-flex justify-content-center align-items-center rounded-circle bg-light">
+                      <i class="fa-solid fa-bag-shopping p-3 rounded-circle" id="order-icon"></i>
+                    </a>
+                    <div class="d-flex flex-column ms-3">
+                      <h6 class="fw-bold mb-1">Total Orders</h6>
+                      <h6 class="mb-0 fw-bold">1,763</h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <!-- Total Revenue Card -->
+              <div class="col-6">
+                <div class="card p-3 h-100 d-flex justify-content-start align-items-center">
+                  <div class="d-flex align-items-center w-100">
+                    <a href="#" class="d-flex justify-content-center align-items-center rounded-circle bg-light">
+                      <i class="fa-solid fa-money-bill-wave p-3 rounded-circle" id="money-icon"></i>
+                    </a>
+                    <div class="d-flex flex-column ms-3">
+                      <h6 class="fw-bold mb-1">Total Revenue</h6>
+                      <h6 class="mb-0 fw-bold">$2,763</h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Total Items Card -->
+              <div class="col-6">
+                <div class="card p-3 h-100 d-flex justify-content-start align-items-center">
+                  <div class="d-flex align-items-center w-100">
+                    <a href="#" class="d-flex justify-content-center align-items-center rounded-circle bg-light">
+                      <i class="fa-solid fa-cube p-3 rounded-circle" id="item-icon"></i>
+                    </a>
+                    <div class="d-flex flex-column ms-3">
+                      <h6 class="fw-bold mb-1">Total Items</h6>
+                      <h6 class="mb-0 fw-bold">363</h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-4">
+          <!-- Sale Analytics -->
+          <div class="col-lg-6" style="max-height: 300px;">
+            <div class="card sale-analytic d-flex flex-column p-4">
+              <h6 class="text-black-50 fw-bold">Yearly Sales</h6>
+              <canvas id="myChart" style="width: 100%; max-width: 600px;"></canvas>
+            </div>
+          </div>
+          <div class="col-lg-3" style="max-height: 300px;">
+            <div class="card w-100 h-100 p-3">
+              <canvas id="pieChart" style="width:100%;max-width:600px;"></canvas>
+            </div>
+          </div>
+          <!-- Recent Orders -->
+          <div class="col-lg-3" style="max-height: 300px;">
+            <div class="card">
+              <div class="text d-flex justify-content-between gap-2 align-items-center p-2" style="border-bottom: solid 0.5px lightgray">
+                <p class="text-black flex-start mt-auto mb-auto" style="vertical-align:center;">Recent Orders</p>
+                <a class="text-black-50 flex-end text-decoration-none fs-6" routerLink="/orders">See All</a>
+              </div>
+              <div class="table-container-1 w-100 h-100 pb-3">
+                <table class="recent-orders-table table-hover">
+                  <tbody>
+                    <tr *ngFor="let order of recentOrders">
+                      <td><img class="img-fluid" [src]="order.image" [alt]="order.name"></td>
+                      <td>
+                        <p class="text-black fw-bold">{{ order.name }}</p>
+                        <p class="text-black-50">{{ order.category }}</p>
+                      </td>
+                      <td>{{ order.price }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row w-100">
+          <!-- Top Selling Products Table -->
+          <div class="col-lg-12 mt-4 mb-4 w-100">
+            <div class="card w-100">
+              <h6 class="text-black-50 fw-bold p-3">Top Selling Products</h6>
+              <div class="table-container w-100 h-100">
+                <table class="top-products-table table-hover">
+                  <thead>
+                    <tr>
+                      <th class="text-center">Image</th>
+                      <th class="text-center">Product</th>
+                      <th class="text-center">Category</th>
+                      <th class="text-center">Price (USD)</th>
+                      <th class="text-center">Quantity Sold</th>
+                      <th class="text-center">Total Amount (USD)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let product of topSellingProducts">
+                      <td><img class="img-fluid" [src]="product.image" [alt]="product.name"></td>
+                      <td>{{ product.name }}</td>
+                      <td>{{ product.category }}</td>
+                      <td>{{ product.price }}</td>
+                      <td>{{ product.quantitySold }}</td>
+                      <td>{{ product.totalAmount }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
