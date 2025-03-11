@@ -4,10 +4,11 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ProductService, Product } from '../../services/product.service';
 import { SidebarComponent } from "../../components/sidebar/sidebar.component";
+import { NavbarComponent } from "../../components/navbar/navbar.component";
 
 @Component({
   selector: 'app-manage-products',
-  imports: [FormsModule, CommonModule, RouterModule, SidebarComponent],
+  imports: [FormsModule, CommonModule, RouterModule, SidebarComponent, NavbarComponent],
   templateUrl: './manage-products.component.html',
   styleUrl: './manage-products.component.css' ,
   
