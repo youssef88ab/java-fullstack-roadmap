@@ -17,6 +17,8 @@ public class Role {
     private Long id ; 
     private String name ;
 
+    
+
     // Getters 
     public Long getId() {
         return this.id ;

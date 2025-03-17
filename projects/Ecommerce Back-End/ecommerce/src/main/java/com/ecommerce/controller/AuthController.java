@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ecommerce.Dto.AuthResponseDto;
-import com.ecommerce.Dto.LoginDto;
+import com.ecommerce.Dto.LoginDTO;
 import com.ecommerce.service.AuthService;
 
 @RestController
@@ -23,7 +23,10 @@ public class AuthController {
 
     // Build Login REST API 
     @PostMapping("/login") 
-    public ResponseEntity<AuthResponseDto> login(@RequestBody LoginDto loginDto) {
+    public ResponseEntity<AuthResponseDto> login(@RequestBody LoginDTO loginDto) {
+
+        System.out.println("USERNAME ENTRED  : " + loginDto.getUsername());
+        System.out.println("PASWROD ENTRED   : " + loginDto.getPassword());
 
         // 01 - Recive The Token From AuthService ; 
         String token = authService.Login(loginDto); 

@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "payments")
-class Payment {
+public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -83,7 +83,7 @@ class Payment {
     
 }
 
-public enum PaymentStatus {
+enum PaymentStatus {
     PENDING, COMPLETED, FAILED
 }
 

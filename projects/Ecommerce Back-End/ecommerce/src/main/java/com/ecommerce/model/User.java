@@ -40,9 +40,9 @@ public class User {
     private Set<Role> roles;
     
     // Getter and Setter for id
-public Long getId() {
-    return id;
-}
+    public Long getId() {
+        return id;
+    }
 
 public void setId(Long id) {
     this.id = id;

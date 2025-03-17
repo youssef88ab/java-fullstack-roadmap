@@ -1,0 +1,87 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="TP1.css">
+    <title>TP 1</title>
+</head>
+
+<body>
+    <section class="variables">
+        <h1>Variables</h1>
+        <button onclick="showVariables()">Alert Variables</button>
+        <h1>Tableaux</h1>
+        <button onclick="afficheMoyen()">Affiche La Moyen</button>
+        <h1>Forms</h1>
+        <form>
+            <input type="button" value="En quelle annee ? " onClick="lireAnnee()">
+        </form>
+    </section>
+    <section class="dom">
+        <h1 style="text-align: center;">Dom</h1>
+        <div id="demo"></div>
+        <button onclick="nouvellefenetre()">Nouvelle Fonetre</button>
+        <button onclick="closefenetre()">Fermer La Fenetre</button>
+        <button onclick="CheckOpen()">La fenêtre est-elle fermée?</button>
+        <button onclick="open2s()">Ouvert et Ferme Apres 2</button>
+        <button onclick="changerTitre()">Changer Titre</button>
+        <button onclick="getUrl()">Recuprer Url</button>
+    </section>
+    <section>
+        <h1>Formulaire</h1>
+        <form name="form1"> <br>
+            <input type="checkbox" name="checkbox" onClick="ModifChamp();">
+            <br>
+            <input type='TEXT' name='champ_text' value='Essai du javascript' size='24'>
+        </form>
+        <form name="formulaire_test" action="mailto:nomprenom@ubm.com" onSubmit="confirmation()">
+            <input type="text" size="40" name="saisie">
+            <input type="submit" value="Envoyer">
+        </form>
+
+        <form name="formulaire_test1" action="mailto:toi-meme@ubm.com">
+            <input type="hidden" value="Nom1">
+            <input type="submit" value="Nom2">
+        </form>
+        <form name="formulaire_test2" action="mailto:toi-meme@ubm.com">
+            <input type="hidden" value="Nom3">
+            <input type="submit" value="Nom4">
+        </form>
+        <button onclick="FormLength()">Forms Length</button>
+        <form name="formulaire_test" action="mailto:toimeme@ubm.com" onSubmit="return
+Methode()">
+            <input type="text" size="40" name="saisie">
+            <input type="submit" value="Envoyer">
+        </form>
+        <form name="formulaire_test" action= "mailto:toimeme@ubm.com">
+            <input type="text" size="40" name="saisie">
+            <input type="submit" value="Envoyer">
+            </form>
+
+    </section>
+
+    <section>
+        <h1>Les Eventments</h1>
+        <div style="width:50; height:50; background:lightsteelblue;"
+onMouseOver="alert('Le curseur entre dans la zone bleue');">
+</div>
+<div> <P onMouseOver="this.style.color='red'"
+onMouseOut="this.style.color='black'"> Move the mouse pointer over this
+text, then move it elsewhere in the document.
+</div>
+<a href="http://www.google.fr" onMouseOver="alert('Pour aller sur google.fr,cliquer ici');">http://www.google.fr</a>
+    </section>
+    <section>
+        <h1>Eventments 2</h1>
+        <input type="text" size="40" maxlength="50" name=« text_name"
+onFocus='javascript:this.style.backgroundColor="red"'
+onMouseOver='javascript:this.style.background="orange"'
+onMouseOut='javascript:this.style.background="green";this.style.bord
+er="1"' onBlur='javascript:this.style.backgroundColor="blue"'>
+    </section>
+
+    <script src="TP1.js"></script>
+</body>
+
+</html>

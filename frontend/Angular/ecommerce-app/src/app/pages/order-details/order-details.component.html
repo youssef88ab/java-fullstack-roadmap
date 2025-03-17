@@ -1,0 +1,43 @@
+<div class="d-flex">
+    <app-sidebar></app-sidebar>
+    <main class="content flex-grow-1">
+        <!-- Content Navigation Bar -->
+        <app-navbar></app-navbar>
+
+        <div class="card p-3 rounded-0 h-100">
+            <div class="row">
+                <div class="col-lg-6">
+                    <p>OrderId : {{order.orderId}}</p>
+                    <p>Order Status : {{order.status}}</p>
+                    <p>Order Date : {{order.orderDate}}</p>
+                    <p>UserId : {{order.userId}} </p>
+                    <p>PaymentId : {{order.paymentId}}</p>
+                    <p>totalPrice : {{order.totalPrice}}</p>
+                </div>
+                <div class="col-lg-6">
+                    <table>
+                        <tr *ngFor="let orderItem of order.orderItems">
+                            <p>{{orderItem.id}}</p>
+                            <p>{{orderItem.quantity}}</p>
+                            <p>{{orderItem.price}}</p>
+                            <p>{{orderItem.proudctName}}</p>
+                        </tr>
+                    </table>
+                    <td [ngSwitch]="order.status" class="col-btn">
+                        <div *ngSwitchCase="'PENDING'">
+                          <button>CANCEL</button>
+                          <button>ASSIGN TO DELIVRY</button>
+                        </div>
+                        <div *ngSwitchCase="'SHIPPED'">
+                          <button>CANCEL</button>
+                        </div>
+                        <div *ngSwitchCase="'DELIVRED'">
+                          <button>REVIEW ORDER</button>
+                        </div>
+                        <div *ngSwitchDefault></div>
+                      </td>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

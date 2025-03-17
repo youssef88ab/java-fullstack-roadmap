@@ -25,7 +25,6 @@ export class ManageProductsComponent implements OnInit{
     }
 
     fetchProducts(): void {
-        
         this.productService.getProducts()
       .subscribe({
         next: (data) => {

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
-import com.ecommerce.Dto.LoginDto;
+import com.ecommerce.Dto.LoginDTO;
 import com.ecommerce.config.JwtTokenProvider;
 import com.ecommerce.model.Role;
 import com.ecommerce.model.User;
@@ -26,7 +26,7 @@ public class AuthService {
     @Autowired 
     private UserRepo userRepo ;
 
-    public String Login(LoginDto loginDto) {
+    public String Login(LoginDTO loginDto) {
 
         // 01 - AuthenticationManager is used to authenticate the user
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
@@ -45,7 +45,7 @@ public class AuthService {
         return token;
     }
 
-    public String getRole(LoginDto loginDto) {
+    public String getRole(LoginDTO loginDto) {
         User user = userRepo.findByUsername(loginDto.getUsername()).orElse(null);
 
         if (user != null) {

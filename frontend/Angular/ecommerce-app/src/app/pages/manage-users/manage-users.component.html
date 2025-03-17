@@ -1,0 +1,41 @@
+<!-- emart.component.html -->
+<div class="main d-flex">
+    <app-sidebar></app-sidebar>
+    <main class="content flex-grow-1">
+      <!-- Content Navigation Bar -->
+      <app-navbar></app-navbar>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card p-3 rounded-0">
+            <table class="product-table">
+              <thead class="bUser-bottom-1">
+                <tr class="bUser-bottom-1">
+                  <th>Id</th>
+                  <th>Usernmae</th>
+                  <th>Email</th>
+                  <th>password</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let User of Users" [routerLink]="['/user-details', User.id]">
+                  <td>{{User.id}}</td>
+                  <td>{{User.username}}</td>
+                  <td>{{User.email}}</td>
+                  <td>{{User.role}}</td>
+                  <td>
+                    <div class="d-flex justify-content-between">
+                      <button [routerLink]="['/edit-user' , User.id]">Edit</button>
+                      <button>Delete</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>

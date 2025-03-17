@@ -1,0 +1,28 @@
+<div class="d-flex">
+    <app-sidebar></app-sidebar>
+    <main class="content flex-grow-1">
+        <!-- Content Navigation Bar -->
+        <app-navbar></app-navbar>
+
+        <div class="card p-3 rounded-0 h-100">
+            <form #editForm="ngForm" (ngSubmit)="onSubmit()" class="row d-flex flex-row User-form ">
+                <div class="col-lg-6 image-container img-fluid">
+
+                </div>
+                <div class="col-lg-6 d-flex flex-column justify-content-start gap-3">
+                    <input type="text" name="id" id="id-input" [(ngModel)]="User.id" style="display: none;">
+                    <label for="name-input">Name:</label>
+                    <input class="p-2" type="text" name="name" id="name-input" [(ngModel)]="User.username" required>
+                    <label for="category-input">Email:</label>
+                    <input class="p-2" type="text" name="description" id="category-input" [(ngModel)]="User.email">
+                    <label for="price-input">Price:</label>
+                    <input class="p-2" type="text" name="price" id="price-input" [(ngModel)]="User.role">
+                    <div class="buttons d-flex flex-row justify-content-between gap-1">
+                        <input type="reset"  id="reset-btn"   value="Cancel" class="p-2 w-100">
+                        <input type="submit" id="submit-btn" value="Update" class="p-2 w-100">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+</div>

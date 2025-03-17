@@ -16,6 +16,7 @@ import { NavbarComponent } from "../../components/navbar/navbar.component";
 })
 export class EditProductComponent implements OnInit {
   productId!: number;
+  
   product: Product = {
     productId: 0,
     name: '',

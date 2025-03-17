@@ -19,31 +19,27 @@ import org.springframework.stereotype.Component;
 @EnableMethodSecurity
 @AllArgsConstructor
 public class SecurityConfig {
-      private UserDetailsService userDetailsService;
+    private UserDetailsService userDetailsService;
 
     private JwtAuthenticationEntryPoint authenticationEntryPoint;
 
     private JwtAuthenticationFilter authenticationFilter;
 
     @Bean
-    public static PasswordEncoder passwordEncoder(){
+    public static PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-
         http.csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests((authorize) -> {
-                    authorize.requestMatchers("/api/auth/**").permitAll();
-                    authorize.requestMatchers(HttpMethod.OPTIONS, "/**").permitAll();
-                    authorize.anyRequest().authenticated();
-                }).httpBasic(Customizer.withDefaults());
-
-        http.exceptionHandling( exception -> exception
-                .authenticationEntryPoint(authenticationEntryPoint));
-
-        http.addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/api/auth/**").permitAll() // Ensure login/register are publicly accessible
+                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                        .anyRequest().authenticated())
+                .httpBasic(Customizer.withDefaults())
+                .exceptionHandling(exception -> exception.authenticationEntryPoint(authenticationEntryPoint))
+                .addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
@@ -52,5 +48,5 @@ public class SecurityConfig {
     public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
         return configuration.getAuthenticationManager();
     }
-    
+
 }
