@@ -1,41 +1,108 @@
 <!-- emart.component.html -->
 <div class="main d-flex">
-    <app-sidebar></app-sidebar>
-    <main class="content flex-grow-1">
-      <!-- Content Navigation Bar -->
-      <app-navbar></app-navbar>
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="card p-3 rounded-0">
-            <table class="product-table">
-              <thead class="bUser-bottom-1">
-                <tr class="bUser-bottom-1">
-                  <th>Id</th>
-                  <th>Usernmae</th>
-                  <th>Email</th>
-                  <th>password</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let User of Users" [routerLink]="['/user-details', User.id]">
-                  <td>{{User.id}}</td>
-                  <td>{{User.username}}</td>
-                  <td>{{User.email}}</td>
-                  <td>{{User.role}}</td>
-                  <td>
-                    <div class="d-flex justify-content-between">
-                      <button [routerLink]="['/edit-user' , User.id]">Edit</button>
-                      <button>Delete</button>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <div>
+  <app-sidebar></app-sidebar>
+  <main class="content flex-grow-1">
+    <!-- Content Navigation Bar -->
+    <app-navbar></app-navbar>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card p-3 rounded-0 d-flex flex-column gap-3 flex-start">
+          <div class="utils d-flex justify-content-between align-items-center">
+            <p class="fw-bold m-0">
+              All Users <span class="text-black-50">{{ UserNumber }}</span>
+            </p>
+            <div class="d-flex align-items-center gap-3">
+              <form class="d-flex gap-2">
+                <button class="btn btn-dark d-flex flex-row align-items-center" id="export-btn">Upload</button>
+                <button class="btn btn-dark" id="export-btn">Export</button>
+                <input class="form-control p-2" type="search" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-dark" type="submit">Search</button>
+              </form>
+
+              <button class="btn btn-dark p-2" [routerLink]="['/add-user']">
+                <span>+</span> Add User
+              </button>
             </div>
           </div>
+          <table class="user-table">
+            <thead class="">
+              <tr class="p-3">
+                <th class="text-start p-3">Username</th>
+                <th class="text-start p-3">Role</th>
+                <th class="text-start p-3">Last Activated</th>
+                <th class="text-start p-3">Date Adeed</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let User of Users">
+                <td class="p-3 text-center">
+                  <div class="d-flex flex-row justify-content-start gap-2 align-items-center">
+                    <img src="/assets/images/profile.png" id="user-profile" alt="" class="img-fluid" />
+                    <div class="d-flex flex-column">
+                      <p class="text-start fw-bold">{{ User.username }}</p>
+                      <p class="text-start text-black text-opacity-75">
+                        {{ User.email }}
+                      </p>
+                    </div>
+                  </div>
+                </td>
+                <td [ngSwitch]="User.roles[0].name">
+                  <span *ngSwitchCase="'ROLE_ADMIN'" class="badge bg-primary rounded-pill p-2 text-center">
+                    {{ User.roles[0].name }}
+                  </span>
+                  <span *ngSwitchCase="'ROLE_USER'" class="badge bg-secondary rounded-pill p-2 text-center">
+                    {{ User.roles[0].name }}
+                  </span>
+                  <span *ngSwitchCase="'ROLE_DELIVRER'" class="badge bg-success rounded-pill p-2 text-center">
+                    {{ User.roles[0].name }}
+                  </span>
+                  <span *ngSwitchDefault>Default Case</span>
+                </td>
+                <td class="text-center">
+                  <p>Mar 4, 2024</p>
+                </td>
+                <td class="text-center">
+                  <p>Jul 5, 2023</p>
+                </td>
+                <td>
+                  <button mat-icon-button [matMenuTriggerFor]="menu" class="border-0">
+                    <mat-icon>&#8942;</mat-icon>
+                  </button>
+
+                  <mat-menu #menu="matMenu" class="bg-transparent no-shadow">
+                    <button mat-menu-item class="mt-1 mb-1 text-center" [routerLink]="['/edit-user', User.id]">
+                      Edit
+                    </button>
+                    <button mat-menu-item class="mt-1 mb-1 text-center" [routerLink]="['/user-details', User.id]">
+                      View Details
+                    </button>
+                    <button mat-menu-item class="mt-1 mb-1 text-center" (click)="deleteUser(User.id)">
+                      Delete
+                    </button>
+                  </mat-menu>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="5" class="border-0">
+                  <div class="pagination d-flex justify-content-center">
+                    <ul class="d-flex flex-row justify-content-center align-items-center gap-4 list-unstyled mt-3">
+                      <li>1</li>
+                      <li>2</li>
+                      <li>3</li>
+                      <li>4</li>
+                      <li>5</li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+          <div></div>
         </div>
       </div>
-    </main>
-  </div>
+    </div>
+  </main>
+</div>

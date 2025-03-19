@@ -2,11 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+export interface Roles {
+  id :  number , 
+  name : string
+}
+
 export interface User {
   id: number;
   username: string;
   email: string;
-  role: string;
+  roles: Roles[];
 }
 
 @Injectable({

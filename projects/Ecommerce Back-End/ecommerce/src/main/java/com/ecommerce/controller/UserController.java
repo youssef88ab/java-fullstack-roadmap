@@ -41,9 +41,10 @@ public class UserController {
     }
 
     @GetMapping("")
-    public ResponseEntity<List<UserDTO>> getAllUsers() {
+    public ResponseEntity<List<User>> getAllUsers() {
         return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
     }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<UserDTO> getUserById(@PathVariable Long id) {
@@ -57,7 +58,7 @@ public class UserController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Void> addUser(User user) {
+    public ResponseEntity<Void> addUser(@RequestBody User user) {
         userService.addUser(user);
         return new ResponseEntity<>(HttpStatus.OK);
     }

@@ -16,6 +16,7 @@ import { OrderDetailsComponent } from './pages/order-details/order-details.compo
 import { ManageUsersComponent } from './pages/manage-users/manage-users.component';
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
 import { EditUserComponent } from './pages/edit-user/edit-user.component';
+import { AddUserComponent } from './pages/add-user/add-user.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -76,6 +77,11 @@ export const routes: Routes = [
   {
     path: 'manage-users',
     component: ManageUsersComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuardService]
   },
+  {
+    path: 'add-user', 
+    component: AddUserComponent , 
+    canActivate: [AuthGuardService]
+  }
 ];

@@ -2,23 +2,26 @@ import { CommonModule } from '@angular/common';
 import { OnInit } from '@angular/core';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
-import { OrderService, Order } from '../../services/order.service';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { UserService , User } from '../../services/user.service';
 import {Component} from '@angular/core';
-
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @Component({
   selector: 'app-manage-users',
-  imports: [NavbarComponent, SidebarComponent , CommonModule , RouterModule],
+  imports: [FormsModule , NavbarComponent, SidebarComponent , CommonModule , RouterModule  , MatButtonModule , MatIconModule , MatMenuModule],
   templateUrl: './manage-users.component.html',
   styleUrl: './manage-users.component.css'
 })
 export class ManageUsersComponent implements OnInit {
 
     Users: User[] = [];
+
+    UserNumber: number = this.Users.length ;
   
     constructor(private UserService: UserService) {}
   
@@ -30,6 +33,7 @@ export class ManageUsersComponent implements OnInit {
       this.UserService.getUsers().subscribe({
         next: (data) => {
           this.Users = data;
+          this.UserNumber = this.Users.length;
           console.log('Fetched Users:', data); // Log the response data
         },
         error: (err) => {
@@ -37,6 +41,21 @@ export class ManageUsersComponent implements OnInit {
         },
       });
     }
-  
 
+    deleteUser(id: number): void {
+      if (confirm("Are You Sure You Want To Delete This User ?"))
+      {
+      this.UserService.deleteUser(id).subscribe({
+        next: (data) => {
+          console.log("Deleted Secusfully");
+          this.fetchUsers(); 
+        },
+        error: (err) => {
+          console.error(err);
+        }
+      })
+    }
+            
+  }
+  
 }

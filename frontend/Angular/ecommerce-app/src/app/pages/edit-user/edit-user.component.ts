@@ -16,11 +16,15 @@ import { NavbarComponent } from "../../components/navbar/navbar.component";
 export class EditUserComponent {
    UserId!: number;
     
+    Roles = [
+      { id: 0, name: '' }
+    ];
+
     User: User = {
       id: 0,
       username: '',
       email: '',
-      role:''
+      roles: this.Roles
     };
   
   

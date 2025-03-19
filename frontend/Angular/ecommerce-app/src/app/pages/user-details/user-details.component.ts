@@ -16,10 +16,14 @@ import { NavbarComponent } from "../../components/navbar/navbar.component";
 export class UserDetailsComponent implements OnInit {
   UserId!: number;
 
+  Roles = [
+    { id: 0, name: '' }
+  ];
+
   User: User = {
     id: 0,
     email: '',
-    role: '',
+    roles: this.Roles ,
     username: '',
   };
 

@@ -1,0 +1,40 @@
+<div class="d-flex">
+    <!-- Sidebar -->
+    <app-sidebar></app-sidebar>
+    <main class="content flex-grow-1">
+        <!-- Content Navigation Bar -->
+        <app-navbar></app-navbar>
+        <div class="card p-3 rounded-0 h-auto">
+            <form class="row d-flex flex-row product-form" id="add-product-form" (ngSubmit)="onSubmit()">
+                <div class="col-lg-6 image-container img-fluid">
+                    <label for="profile-upload" class="profile-btn">
+                        <img id="profile-img" src="https://via.placeholder.com/80" alt="Profile">
+                    </label>
+                    <input type="file" id="profile-upload" class="file-input" accept="image/*">
+                </div>
+                <div class="col-lg-6 d-flex flex-column justify-content-start gap-3">
+                    <label for="username">Username:</label>
+                    <input class="p-2" type="text" name="username" id="name-input" [(ngModel)]="newUser.username" required />
+
+                    <label for="email">Email:</label>
+                    <input class="p-2" type="text" name="email" id="description" [(ngModel)]="newUser.email" required />
+
+                    <label for="password">Password:</label>
+                    <input class="p-2" type="password" name="password" id="price-input" [(ngModel)]="newUser.password" required />
+
+                    <label for="role">Role:</label>
+                    <select name="role" id="role" [(ngModel)]="newUser.roles[0].id" required>
+                        <option [ngValue]="1">Admin</option>
+                        <option [ngValue]="2">User</option>
+                        <option [ngValue]="3">Deliverer</option>
+                    </select>
+
+                    <div class="buttons d-flex flex-row justify-content-between gap-1">
+                        <input type="reset" name="reset" id="reset-btn" value="Cancel" class="p-2 w-100" (click)="onReset()" />
+                        <input type="submit" name="submit" id="submit-btn" value="Add" class="p-2 w-100" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+</div>

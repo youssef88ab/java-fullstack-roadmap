@@ -1,7 +1,10 @@
-<div class="logout-container d-flex justifiy-content-center align-items-center">
-    <h2>Logout</h2>
-    <h3>Are You Sure You Want To Logout !</h3>
-    <button (click)="onLogout()" >Yes</button>
-    <button (click)="goBack()">No</button>
+<main>
+  <div class="logout-container d-flex justifiy-content-center align-items-center flex-column gap-4">
+    <h2 class="m-auto">Logout</h2>
+    <h3 class="m-auto">Are You Sure You Want To Logout !</h3>
+    <div class="d-flex flex-row justify-content-between gap-2">
+      <button class="btn btn-danger" (click)="onLogout()">Yes</button>
+      <button class="btn btn-primary" (click)="goBack()">No</button>
+    </div>
   </div>
-  
+</main>

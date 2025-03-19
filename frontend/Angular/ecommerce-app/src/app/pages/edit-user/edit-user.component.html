@@ -16,7 +16,7 @@
                     <label for="category-input">Email:</label>
                     <input class="p-2" type="text" name="description" id="category-input" [(ngModel)]="User.email">
                     <label for="price-input">Price:</label>
-                    <input class="p-2" type="text" name="price" id="price-input" [(ngModel)]="User.role">
+                    <input class="p-2" type="text" name="price" id="price-input" [(ngModel)]="User.roles[0].id">
                     <div class="buttons d-flex flex-row justify-content-between gap-1">
                         <input type="reset"  id="reset-btn"   value="Cancel" class="p-2 w-100">
                         <input type="submit" id="submit-btn" value="Update" class="p-2 w-100">
