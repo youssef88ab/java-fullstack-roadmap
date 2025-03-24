@@ -18,6 +18,8 @@ export class AddUserComponent {
     { id: 0, name: '' }
   ];
 
+  checkPass :string = '';
+
   newUser = {
     id: 0, 
     username: '',
