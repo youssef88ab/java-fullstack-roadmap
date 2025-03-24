@@ -56,12 +56,13 @@ export class EditUserComponent {
         }
       });
     }
+
   
     onSubmit(): void {
+      console.log("User Sended : " , this.User );
       this.UserService.updateUser(this.User).subscribe({
         next: (response) => {
           console.log('User updated:', response);
-          window.location.href = '/';
         },
         error: (error) => {
           console.error('Update error:', error);
