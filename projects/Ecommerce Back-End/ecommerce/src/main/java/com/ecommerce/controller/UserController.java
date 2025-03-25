@@ -47,9 +47,9 @@ public class UserController {
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserDTO> getUserById(@PathVariable Long id) {
+    public ResponseEntity<User> getUserById(@PathVariable Long id) {
         try {
-            UserDTO user = userService.getUser(id);
+            User user = userService.getUser(id);
             return new ResponseEntity<>(user, HttpStatus.OK);
         } catch (Exception e) {
             System.out.println("Get User By Id Error : " + e.getMessage());
@@ -69,8 +69,8 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<Void> updateUser(Long id, @RequestBody User updatedUser) {
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Void> updateUser(@PathVariable Long id, @RequestBody User updatedUser) {
         try {
             userService.updateUser(id, updatedUser);
             return new ResponseEntity<>(HttpStatus.OK);
@@ -78,5 +78,18 @@ public class UserController {
             System.out.println("UPDATE USER ERROR : " + e.getMessage());
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+
+    @GetMapping("/search/keyword/{keyword}")
+    public ResponseEntity<List<User>> searchUser(@PathVariable String keyword) {
+        try
+        {
+            return new ResponseEntity<>( userService.searchUser(keyword) ,  HttpStatus.OK);
+        }
+        catch (Exception e) {
+            System.out.println("Error While Searching User : " + e.getMessage());
+
+        }
+        return  null ;
     }
 }

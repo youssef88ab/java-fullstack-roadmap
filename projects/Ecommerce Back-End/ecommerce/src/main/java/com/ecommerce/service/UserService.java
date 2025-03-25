@@ -55,13 +55,10 @@ public class UserService {
         return usersRepo;
     }
 
-    public UserDTO getUser(Long id) {
+    public User getUser(Long id) {
         User user = userRepo.findById(id).orElseThrow(() -> new RuntimeException("User Not Found"));
 
-        UserDTO userDTO = new UserDTO(user.getId(), user.getUsername(), user.getEmail(),
-                user.getRoles().iterator().next().getName());
-
-        return userDTO;
+        return user;
     }
 
     public void addUser(User user) {
@@ -83,28 +80,39 @@ public class UserService {
     }
 
     public void updateUser(Long id, User updatedUser) {
-        // Find The User
-        User user = userRepo.findById(id).orElseThrow(() -> new RuntimeException("User Not Found"));
+        try {
+            // Find The User
+            User user = userRepo.findById(id).orElseThrow(() -> new RuntimeException("User Not Found"));
 
-        // Mise A jour les Champs
+            // Mise A jour les Champs
+            String email = updatedUser.getEmail();
 
-        String email = updatedUser.getEmail();
-        if (userRepo.findByEmail(email).isPresent()) {
-            throw new RuntimeException("This Email is Already Taken email : " + email);
-        } else {
-            user.setEmail(email);
+            // Check if email exists AND it belongs to a different user
+            if (userRepo.findByEmail(email).isPresent() && !user.getEmail().equals(email)) {
+                throw new RuntimeException("This Email is Already Taken email : " + email);
+            } else {
+                user.setEmail(email);
+            }
+
+            String username = updatedUser.getUsername();
+            // Check if username exists AND it belongs to a different user
+            if (userRepo.findByUsername(username).isPresent() && !user.getUsername().equals(username)) {
+                throw new RuntimeException("This Username is Already Taken Username : " + username);
+            } else {
+                user.setUsername(username);
+            }
+
+            // Update Role
+            user.setRoles(updatedUser.getRoles());
+
+            System.out.println(user.toString());
+
+            // Save The User In Database ;
+            userRepo.save(user);
+
+        } catch (Exception e) {
+            System.out.println("UPDATE USER ERROR : " + e.getMessage());;
         }
-
-        String username = updatedUser.getUsername();
-        if (userRepo.findByUsername(username).isPresent()) {
-            throw new RuntimeException("This Username is Already Take Username : " + username);
-        } else {
-            user.setUsername(username);
-        }
-
-        // Save The User In Database ;
-        userRepo.save(user);
-
     }
 
     public void deleteUser(Long id) {
@@ -115,5 +123,12 @@ public class UserService {
 
         // Now delete the user
         userRepo.deleteById(id);
+    }
+
+    public List<User> searchUser(String keyword) {
+        keyword = "%" + keyword + "%" ;
+
+        return userRepo.findByUsernameLike(keyword);
+
     }
 }
