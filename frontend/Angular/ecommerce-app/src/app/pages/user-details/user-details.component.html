@@ -4,15 +4,26 @@
         <!-- Content Navigation Bar -->
         <app-navbar></app-navbar>
 
-        <div class="card p-3 rounded-0 h-100">
-            <div class="row">
-                <div class="col-lg-6">
-                    <p>UserId : {{User.id}}</p>
-                    <p>User Status : {{User.username}}</p>
-                    <p>User Date : {{User.email}}</p>
-                    <p>UserId : {{User.roles[0].name}} </p>
+        <div class="card p-3 rounded-0 h-auto">
+            <div class="row d-flex justify-content-start gap-0">
+                <div class="col-lg-2">
+                    <img class="img-fluid h-75" src="assets/images/profile.png" alt="">
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6 pt-3 d-flex flex-column justify-content-start  gap-3">
+                    <h3>{{User.username}}</h3>
+                    <div class="d-flex flex-row justify-content-start gap-3">
+                        <p>Id : {{User.id}}</p>
+                        <p><i class="fas fa-envelope"></i> {{User.email}}</p>
+                        <p><i class="fas fa-house"></i>Temara</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 d-flex flex-column justify-content-between gap-2">
+                    <h4 class="text-center">Account Status</h4>
+                    <div class="card account-status d-flex flex-column justify-content-between gap-2">
+                            <p class="">Status : Active</p>
+                            <p class="">Registration Date : Jul 5, 2024</p>
+                            <p class="">Last Login (IP & Location) : 192.168.1.1 | Rabat</p>
+                    </div>
 
                 </div>
             </div>

@@ -15,8 +15,8 @@
               <form class="d-flex gap-2">
                 <button class="btn btn-dark d-flex flex-row align-items-center" id="export-btn">Upload</button>
                 <button class="btn btn-dark" id="export-btn">Export</button>
-                <input class="form-control p-2" type="search" placeholder="Search" aria-label="Search" />
-                <button class="btn btn-dark" type="submit">Search</button>
+                <input class="form-control p-2" type="search" name="keyword" placeholder="Search" aria-label="Search"[(ngModel)]="keyword" />
+                <button class="btn btn-dark" (click)="onSearch(keyword)">Search</button>
               </form>
 
               <button class="btn btn-dark p-2" [routerLink]="['/add-user']">
@@ -66,18 +66,18 @@
                   <p>Jul 5, 2023</p>
                 </td>
                 <td>
-                  <button mat-icon-button [matMenuTriggerFor]="menu" class="border-0">
+                  <button mat-icon-button [matMenuTriggerFor]="menu" class="no-shadow border-0">
                     <mat-icon>&#8942;</mat-icon>
                   </button>
-
-                  <mat-menu #menu="matMenu" class="bg-transparent no-shadow">
-                    <button mat-menu-item class="mt-1 mb-1 text-center" [routerLink]="['/edit-user', User.id]">
+                  
+                  <mat-menu #menu="matMenu" class="custom-menu">
+                    <button mat-menu-item class="custom-menu-item mb-2" [routerLink]="['/edit-user', User.id]">
                       Edit
                     </button>
-                    <button mat-menu-item class="mt-1 mb-1 text-center" [routerLink]="['/user-details', User.id]">
+                    <button mat-menu-item class="custom-menu-item" [routerLink]="['/user-details', User.id]">
                       View Details
                     </button>
-                    <button mat-menu-item class="mt-1 mb-1 text-center" (click)="deleteUser(User.id)">
+                    <button mat-menu-item class="custom-menu-item delete-item mt-2" (click)="deleteUser(User.id)">
                       Delete
                     </button>
                   </mat-menu>

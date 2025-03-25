@@ -6,14 +6,18 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from "../../components/sidebar/sidebar.component";
 import { NavbarComponent } from "../../components/navbar/navbar.component";
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-user-details',
-  imports: [RouterModule , CommonModule , SidebarComponent , NavbarComponent , FormsModule],
+  imports: [RouterModule , CommonModule , SidebarComponent , NavbarComponent , FormsModule ],
   templateUrl: './user-details.component.html',
   styleUrl: './user-details.component.css',
 })
 export class UserDetailsComponent implements OnInit {
+
+  envelopeIcon = faEnvelope;
+
   UserId!: number;
 
   Roles = [

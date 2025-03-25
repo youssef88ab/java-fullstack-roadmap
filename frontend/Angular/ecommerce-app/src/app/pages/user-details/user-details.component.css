@@ -48,3 +48,13 @@ body , html{
     cursor: pointer;
 }
 
+.account-status p {
+    border: solid black 1px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.account-status {
+    border: none;
+    font-size: 14px;
+}

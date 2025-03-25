@@ -22,6 +22,8 @@ export class ManageUsersComponent implements OnInit {
     Users: User[] = [];
 
     UserNumber: number = this.Users.length ;
+
+    keyword: string = '';
   
     constructor(private UserService: UserService) {}
   
@@ -40,6 +42,18 @@ export class ManageUsersComponent implements OnInit {
           console.error(err);
         },
       });
+    }
+
+    onSearch(keyword: string): void {
+      this.UserService.searchUser(keyword).subscribe({
+        next: (data) => {
+          this.Users = data; 
+          console.log("Serched Users : " , this.Users); 
+        },
+        error: (err) => {
+          console.error('Error Searching User');
+        }
+      })
     }
 
     deleteUser(id: number): void {
