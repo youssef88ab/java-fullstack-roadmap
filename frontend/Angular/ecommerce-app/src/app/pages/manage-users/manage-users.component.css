@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -114,3 +115,27 @@ li {
 li:hover {
    background-color: #eee;
 }
+
+/* Menu panel */
+.custom-menu {
+   min-width: 120px;
+   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+   border-radius: 4px;
+ }
+ 
+ /* Menu items */
+ .custom-menu-item {
+   display: block;
+   text-align: center;
+   padding: 8px 16px;
+   color: #333;
+ }
+ 
+ .custom-menu-item:hover {
+   background: #f5f5f5;
+ }
+ 
+ .delete-item {
+   color: #e53935;
+ }
+
