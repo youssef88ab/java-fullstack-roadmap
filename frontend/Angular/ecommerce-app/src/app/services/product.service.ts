@@ -39,4 +39,12 @@ export class ProductService {
   deleteProduct(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/delete/${id}`);
   }
+
+  searchProduct(keyword: string): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.apiUrl}/search/keyword/${keyword}`);
+  }
+
+  getProductsCount(): Observable<number> {
+    return this.http.get<number>(`${this.apiUrl}/count`);
+  }
 }

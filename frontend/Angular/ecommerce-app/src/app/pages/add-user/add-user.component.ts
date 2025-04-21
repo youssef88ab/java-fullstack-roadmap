@@ -25,8 +25,19 @@ export class AddUserComponent {
     username: '',
     email: '',
     roles: this.Roles, 
-    password: ''
+    password: '', 
+    address: '' , 
+    phone: '', 
+    gender: '', 
+    birthDate: '',
+    dateAdded: ''
   };
+
+  Street: string = '' ; 
+  City: string = '' ; 
+  State: string = ''; 
+  ZIP: string = ''; 
+  Country: string = '';
 
   constructor(private http: HttpClient, private router: Router , private userService: UserService) {}
 
@@ -46,7 +57,7 @@ export class AddUserComponent {
   }
 
   onReset() {
-    this.newUser = {id :0 ,  username: '', email: '', password: '', roles: [{ id: 0 , name: '' }] };
+    this.newUser = {id :0 ,  username: '', email: '', password: '', gender: '' , phone: '' , address: '' , dateAdded: '' ,  birthDate: '' ,  roles: [{ id: 0 , name: '' }] };
 }
 
 }

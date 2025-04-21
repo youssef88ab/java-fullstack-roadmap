@@ -1,7 +1,6 @@
 body {
     font-family: 'Poppins' , sans-serif;
     background: #a7caff;
-
 }
 
 
@@ -18,7 +17,6 @@ body {
 
 /* Welcome Card */
 .card {
-    border-radius: 12px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     height: 100%;
 }
@@ -49,114 +47,20 @@ body {
 
 
 
-/* Placeholder for Charts */
-.chart {
-    height: 60px;
-    background: radial-gradient(circle, #f5f5f5 40%, transparent 60%);
-}
 
-.bar-chart {
-    background: linear-gradient(to right, #007bff 30%, transparent 100%);
-}
 
-/* Top Selling Products */
- .top-products-table {
-    border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
- }
-
- .top-products-table th {
-    align-items: center;
-    font-size: 14px;
-    text-align: center;
- }
-
- .top-products-table td {
+ .category {
     font-size: 12px;
-    text-align: center;
-    align-items: center;
  }
 
- .top-products-table th, .top-products-table td {
-    vertical-align: middle; /* Centers text vertically */
-    text-align: center; /* Centers text horizontally */
-}
-
- .top-products-table td img {
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
+ .recent-orders {
+    font-size: 14px !important;
  }
 
- .table-container {
-    max-height: 284px; /* Adjust height */
-    overflow-y: auto;
-    border: 1px solid #ccc;
-}
+ .card-body {
+    overflow: hidden; /* Ensures clean edges */
+  }
 
-.top-products-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.top-products-table thead {
-    position: sticky;
-    top: 0;
-    background-color: white; /* Keep it visible */
-    z-index: 2;
-}
-
-.top-products-table th, td {
-    padding: 8px;
-    border: 1px solid #ddd;
-    text-align: left;
-}
-
-/* Scrollbar container */
-.table-container::-webkit-scrollbar {
-    width: 3px; /* Width for vertical scrollbar */
-    height: 7px; /* Height for horizontal scrollbar */
-}
-
-/* Scrollbar track */
-.table-container::-webkit-scrollbar-track {
-    background: #f1f1f1; /* Light gray background */
-    border-radius: 5px;
-}
-
-/* Scrollbar handle (thumb) */
-.table-container::-webkit-scrollbar-thumb {
-    background: #007bff; /* Blue color */
-    border-radius: 5px;
-}
-
-/* Scrollbar handle on hover */
-.table-container::-webkit-scrollbar-thumb:hover {
-    background: #0056b3; /* Darker blue */
-}
-
-/* End Top Selling Products */
-
-/* Recent Orders Table */ 
-.recent-orders-table {
-    border: none;
-}
-
-
-.recent-orders-table td img {
-    width: 60px;
-    height: 60px;
-    object-fit:contain;
- }
-
- .recent-orders-table {
-    border: none;
- }
-
- .recent-orders-table td {
-    font-size: 10px;
- }
-
- .table-container-1 {
-    border: none;
- }
+  .card {
+    overflow: hidden;
+  }

@@ -7,10 +7,12 @@ import { CommonModule } from '@angular/common';
 import { SidebarComponent } from "../../components/sidebar/sidebar.component";
 import { NavbarComponent } from "../../components/navbar/navbar.component";
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { Order } from '../../services/order.service';
+import { OrderService } from '../../services/order.service';
 
 @Component({
   selector: 'app-user-details',
-  imports: [RouterModule , CommonModule , SidebarComponent , NavbarComponent , FormsModule ],
+  imports: [RouterModule , CommonModule , SidebarComponent , NavbarComponent , FormsModule  ],
   templateUrl: './user-details.component.html',
   styleUrl: './user-details.component.css',
 })
@@ -29,19 +31,27 @@ export class UserDetailsComponent implements OnInit {
     email: '',
     roles: this.Roles ,
     username: '',
+    phone: '',
+    address: '' , 
+    gender: '', 
+    birthDate: '', 
+    dateAdded: ''
   };
+
+  Orders : Order[] = []; 
 
   constructor(
     private route: ActivatedRoute,
-    private UserService: UserService
+    private UserService: UserService , 
+    private OrderService: OrderService
   ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.UserId = parseInt(params.get('userId') || '0', 10);
-      console.log('Extracted UserId from route:', this.UserId); // Debug
       if (this.UserId) {
         this.fetchUser(this.UserId);
+        this.fetchOrderByUserId(this.UserId);
       } else {
         console.log('No valid UserId found in route');
       }
@@ -52,11 +62,21 @@ export class UserDetailsComponent implements OnInit {
     this.UserService.getUser(UserId).subscribe({
       next: (data) => {
         this.User = data;
-        console.log('Fetched User:', this.User); // Debug
       },
       error: (err) => {
         console.error('Error fetching User:', err);
       },
     });
+  }
+
+  fetchOrderByUserId(UserId : number): void {
+    this.OrderService.findbyUserId(UserId).subscribe({
+      next: (data) => {
+        this.Orders = data;
+      },
+      error: (err) => {
+        console.error('Error Finding Orders');
+      }
+    })
   }
 }

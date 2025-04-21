@@ -17,6 +17,11 @@ import { ManageUsersComponent } from './pages/manage-users/manage-users.componen
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
 import { EditUserComponent } from './pages/edit-user/edit-user.component';
 import { AddUserComponent } from './pages/add-user/add-user.component';
+import { ProductDetailsComponent } from './pages/product-details/product-details.component';
+import { PaymentsComponent } from './pages/payments/payments.component';
+import { AnalyticsComponent } from './pages/analytics/analytics.component';
+import { SettingsComponent } from './pages/settings/settings.component';
+import { PaymentDetailsComponent } from './pages/payment-details/payment-details.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -82,6 +87,36 @@ export const routes: Routes = [
   {
     path: 'add-user', 
     component: AddUserComponent , 
+    canActivate: [AuthGuardService]
+  }, 
+  {
+    path: 'product-details/:productId',
+    component: ProductDetailsComponent , 
+    canActivate: [AuthGuardService]
+  }, 
+  {
+    path: 'payments', 
+    component: PaymentsComponent ,
+    canActivate: [AuthGuardService]
+  }, 
+  {
+    path: 'analytics', 
+    component: AnalyticsComponent, 
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'settings',
+    component: SettingsComponent, 
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'contact-us', 
+    component: ContactUsComponent, 
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'payment-details/:paymentId',
+    component: PaymentDetailsComponent,
     canActivate: [AuthGuardService]
   }
 ];

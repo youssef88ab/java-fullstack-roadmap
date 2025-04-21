@@ -12,6 +12,11 @@ export interface User {
   username: string;
   email: string;
   roles: Roles[];
+  address: string ;
+  phone : string;
+  birthDate : string;
+  gender : string;
+  dateAdded : string;
 }
 
 @Injectable({
@@ -35,14 +40,14 @@ export class UserService {
   }
 
   updateUser(User: User): Observable<User> {
-    return this.http.put<User>(
-      `${this.apiUrl}/update/${User.id}`,
-      User
-    );
+    return this.http.put<User>(`${this.apiUrl}/update/${User.id}`,User);
   }
-
 
   deleteUser(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/delete/${id}`);
+  }
+
+  searchUser(keyword: string) : Observable<User[]> {
+    return this.http.get<User[]>(`${this.apiUrl}/search/keyword/${keyword}`);
   }
 }

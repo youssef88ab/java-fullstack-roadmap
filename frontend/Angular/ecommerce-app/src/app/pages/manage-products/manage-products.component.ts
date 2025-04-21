@@ -5,15 +5,23 @@ import { CommonModule } from '@angular/common';
 import { ProductService, Product } from '../../services/product.service';
 import { SidebarComponent } from "../../components/sidebar/sidebar.component";
 import { NavbarComponent } from "../../components/navbar/navbar.component";
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-manage-products',
-  imports: [FormsModule, CommonModule, RouterModule, SidebarComponent, NavbarComponent],
+  imports: [FormsModule, CommonModule, RouterModule, SidebarComponent, NavbarComponent , MatMenuModule , MatIconModule , MatButtonModule],
   templateUrl: './manage-products.component.html',
   styleUrl: './manage-products.component.css' ,
   
 })
 export class ManageProductsComponent implements OnInit{
+
+    keyword : string = '';
+
+    productsNumber : number = 0 ;
+
     products: Product[] = [] ; 
     
     constructor(private productService : ProductService) {
@@ -29,7 +37,9 @@ export class ManageProductsComponent implements OnInit{
       .subscribe({
         next: (data) => {
           this.products = data;
+          this.productsNumber = this.products.length;
           console.log('Fetched products:', data);  // Log the response data
+
         },
         error: (err) => {
           console.error(err);
@@ -51,4 +61,23 @@ export class ManageProductsComponent implements OnInit{
               });
             }
         }
+
+    onSearch(keyword: string) : void {
+      if (keyword == ''){
+        this.fetchProducts();
+      }
+      else {
+        this.productService.searchProduct(keyword).subscribe({
+          next: (data) => {
+            this.products = data ;
+            console.log("Searched Product : " , data);
+          },
+          error: (err) => {
+            console.error(err);
+          }
+        })
+      }
+
+
+    }
 }

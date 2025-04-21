@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ShippingDetails } from './shipping-details.service';
 
 export interface OrderItems {
   id : number
@@ -11,11 +12,14 @@ export interface OrderItems {
 
 export interface Order {
   orderId : number , 
-  userId : number , 
+  userId : number ,
+  username : string ,  
+  email : string ,
   totalPrice : number , 
   status : string , 
   orderDate : string , 
   orderItems : OrderItems[] , 
+  shippingDetails : ShippingDetails , 
   paymentId : number , 
 }
 
@@ -51,5 +55,12 @@ export class OrderService {
     return this.http.delete(`${this.apiUrl}/delete/${id}`);
   }
 
+  findbyUserId(id: number): Observable<Order[]> {
+    return this.http.get<Order[]>(`${this.apiUrl}/byUserId/${id}`);
+  }
+
+  getOrdersCount(): Observable<number> {
+    return this.http.get<number>(`${this.apiUrl}/count`);
+  }
 
 }

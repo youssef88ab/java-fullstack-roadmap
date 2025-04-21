@@ -24,10 +24,24 @@ export class EditUserComponent {
       id: 0,
       username: '',
       email: '',
-      roles: this.Roles
+      roles: this.Roles ,
+      phone: '',
+      address: '' , 
+      gender: '', 
+      birthDate: '',
+      dateAdded: ''
     };
   
+
+
+    Street: string = '' ; 
+    City: string = '' ; 
+    State: string = ''; 
+    ZIP: number = 0; 
+    Country: string = '';
+    Gender: string = '';
   
+
     constructor(
       private route: ActivatedRoute,
       private UserService: UserService
@@ -45,10 +59,20 @@ export class EditUserComponent {
       });
     }
   
+    extractAddress(address: string): void {
+      const arr: string[] = address.split(",");
+      this.Street = arr[0] ; 
+      this.City = arr[1];
+      this.State = arr[2];
+      this.ZIP = parseInt(arr[3],10);
+      this.Country = arr[4];
+    }
+
     fetchUser(UserId: number): void {
       this.UserService.getUser(UserId).subscribe({
         next: (data) => {
           this.User = data;
+          this.extractAddress(this.User.address);
           console.log('Fetched User:', this.User); // Debug
         },
         error: (err) => {

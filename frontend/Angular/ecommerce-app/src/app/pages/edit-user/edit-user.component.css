@@ -54,3 +54,18 @@ body , html{
     border: solid 1px lightgray;
     border-radius: 5px;
  }
+
+ 
+.img-btn {
+    width: min-content;
+ }
+ 
+ .no-spinner::-webkit-outer-spin-button,
+   .no-spinner::-webkit-inner-spin-button {
+     -webkit-appearance: none;
+     margin: 0;
+   }
+   .no-spinner[type=number] {
+     -moz-appearance: textfield;
+   }
+ 

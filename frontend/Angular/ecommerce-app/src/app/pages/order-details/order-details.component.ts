@@ -6,14 +6,31 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { SidebarComponent } from "../../components/sidebar/sidebar.component";
 import { NavbarComponent } from "../../components/navbar/navbar.component";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faBagShopping } from '@fortawesome/free-solid-svg-icons';
+import { faCalendar} from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faCreditCard} from '@fortawesome/free-solid-svg-icons';
+import { faTruck } from '@fortawesome/free-solid-svg-icons';
+import { faDollarSign } from '@fortawesome/free-solid-svg-icons';
+import { ShippingDetails } from '../../services/shipping-details.service';
 
 @Component({
   selector: 'app-order-details',
-  imports: [FormsModule, CommonModule , RouterModule, SidebarComponent, NavbarComponent],
+  imports: [FormsModule, CommonModule , RouterModule, SidebarComponent, NavbarComponent , FontAwesomeModule],
   templateUrl: './order-details.component.html',
   styleUrl: './order-details.component.css'
 })
 export class OrderDetailsComponent {
+
+  // Icons ;
+  faBagShopping = faBagShopping;
+  faCalendar = faCalendar;
+  faCreditCard = faCreditCard;
+  faUser = faUser;
+  faTruck = faTruck;
+  faDollarSign = faDollarSign;
+
     orderId!: number;
 
     OrderItems = {
@@ -22,16 +39,31 @@ export class OrderDetailsComponent {
       price : 0 ,
       productName: ''
     }
-    
-    order: Order = {
-        orderId : 0 , 
-        userId : 0 , 
-        totalPrice : 0 , 
-        status : '' , 
-        orderDate : '' , 
-        orderItems: [] as OrderItems[], 
-        paymentId : 0 , 
-    };
+
+    // Initialize with proper types
+  shippingDetails: ShippingDetails = {
+    id: 0, 
+    address: '', 
+    city: '', 
+    country: '', 
+    delivered_at: '', 
+    estimated_delivery_date: '', 
+    postal_code: 0, 
+    recipient_phone: '' 
+  };
+  
+  order: Order = {
+    orderId: 0, 
+    userId: 0, 
+    totalPrice: 0, 
+    email: '', 
+    username: '',
+    status: 'PENDING', 
+    orderDate: '', 
+    orderItems: [], 
+    shippingDetails: this.shippingDetails, 
+    paymentId: 0 
+  };
   
   
     constructor(

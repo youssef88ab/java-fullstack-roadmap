@@ -12,16 +12,18 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(credentials: { username: string; password: string }): Observable<any> {
-    return this.http.post<{ token: string }>(`${this.apiUrl}/login`, credentials)
+    return this.http.post<{ token: string , username: string }>(`${this.apiUrl}/login`, credentials)
       .pipe(
         tap(response => {
           localStorage.setItem('token', response.token);
+          localStorage.setItem('username', response.username);
         })
       );
   }
 
   logout(): void {
     localStorage.removeItem('token');
+    localStorage.removeItem('username');
   }
 
   getToken(): string | null {
