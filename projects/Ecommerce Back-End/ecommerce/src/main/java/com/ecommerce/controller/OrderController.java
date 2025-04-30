@@ -47,5 +47,14 @@ public class OrderController {
         return new ResponseEntity<>(HttpStatus.OK);
     } 
 
+    @GetMapping("/byUserId/{id}")
+    public  ResponseEntity<List<OrderDTO>> findByUserId(@PathVariable Long id) {
+        return new ResponseEntity<>(orderService.getByUserId(id) , HttpStatus.OK);
+    }
+
+    @GetMapping("/count")
+    public ResponseEntity<Long> getOrdersCount() {
+        return new ResponseEntity<>(orderService.getOrdersCount() , HttpStatus.OK);
+    }
 
 }

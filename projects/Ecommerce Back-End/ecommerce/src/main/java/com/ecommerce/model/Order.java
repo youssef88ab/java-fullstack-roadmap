@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ecommerce.Dto.ShippingDetailsDTO;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -41,6 +42,10 @@ public class Order {
     @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
     private Payment payment;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "shipping_details_id")
+    private ShippingDetails shippingDetails;
+
     // Default Constructor 
 
     public Order() {
@@ -49,7 +54,7 @@ public class Order {
 
     // Parametreized Constructor 
 
-    public Order(Long id , User user , Double totalPrice , OrderStatus status , LocalDateTime orderDate , List<OrderItem> orderItems , Payment payment) {
+    public Order(Long id , User user , Double totalPrice , OrderStatus status , LocalDateTime orderDate , List<OrderItem> orderItems , Payment payment , ShippingDetails shippingDetails) {
         this.id = id ; 
         this.user = user ;
         this.status = status ;
@@ -57,6 +62,7 @@ public class Order {
         this.totalPrice = totalPrice ;
         this.orderItems = orderItems;
         this.payment = payment ;
+        this.shippingDetails = shippingDetails;
     }
 
     // Getters and Setters
@@ -115,6 +121,12 @@ public class Order {
     
     public void setPayment(Payment payment) {
         this.payment = payment;
+    }
+
+    public  ShippingDetails getShippingDetails() { return  shippingDetails;}
+
+    public  void  setShippingDetails(ShippingDetails shippingDetails) {
+        this.shippingDetails = shippingDetails;
     }
     
 }

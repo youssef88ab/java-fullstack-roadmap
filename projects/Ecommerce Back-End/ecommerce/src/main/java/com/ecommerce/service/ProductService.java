@@ -54,4 +54,9 @@ public class ProductService {
         return productRepo.save(product);
     }
 
+    public List<Product> searchProduct(String keyword) { return productRepo.findByNameLike(keyword);}
+
+    public Long getProductsCount() {
+        return productRepo.count();
+    }
 }

@@ -34,10 +34,12 @@ public class AuthController {
         // 02 - Get the user role from the service or from the token
         String role = authService.getRole(loginDto);
 
-        // 03 - Set The Token as a response using JwtAuthResponse Dto Class 
+
+        // 03 - Set The Token as a response using JwtAuthResponse Dto Class
         AuthResponseDto authResponseDto = new AuthResponseDto(); 
         authResponseDto.setToken(token);
         authResponseDto.setRole(role);
+        authResponseDto.setUsername(loginDto.getUsername());
 
         //03 - Return the response to the user
         return new ResponseEntity<>(authResponseDto, HttpStatus.OK);

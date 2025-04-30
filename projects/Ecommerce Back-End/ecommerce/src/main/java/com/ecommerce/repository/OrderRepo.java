@@ -13,6 +13,6 @@ public interface OrderRepo extends JpaRepository<Order , Long> {
 
     public List<Order> findByStatus(OrderStatus status);
 
-
+    public  List<Order> findByUserId(Long id);
     
 }

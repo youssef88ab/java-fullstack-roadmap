@@ -121,4 +121,15 @@ public class ProductController {
         }
         return "\"" + field.replace("\"", "\"\"") + "\"";
     }
+
+    @GetMapping("/search/keyword/{keyword}")
+    private ResponseEntity<List<Product>> searchByKeyword(@PathVariable String keyword) {
+        keyword = "%" + "%" ;
+        return new ResponseEntity<>(productService.searchProduct(keyword) , HttpStatus.OK);
+    }
+
+    @GetMapping("count")
+    private ResponseEntity<Long> getProductsCount() {
+        return new ResponseEntity<>(productService.getProductsCount() , HttpStatus.OK);
+    }
 }

@@ -83,8 +83,3 @@ public class Payment {
     
 }
 
-enum PaymentStatus {
-    PENDING, COMPLETED, FAILED
-}
-
-    

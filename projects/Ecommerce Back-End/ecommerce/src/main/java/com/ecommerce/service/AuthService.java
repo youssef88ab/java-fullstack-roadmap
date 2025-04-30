@@ -31,7 +31,7 @@ public class AuthService {
         // 01 - AuthenticationManager is used to authenticate the user
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
             loginDto.getUsername() ,
-            loginDto.getPassword() 
+            loginDto.getPassword()
         ));
 
          /* 02 - SecurityContextHolder is used to allows the rest of the application to know
@@ -56,5 +56,7 @@ public class AuthService {
 
         return null;
     }
+
+
     
 }

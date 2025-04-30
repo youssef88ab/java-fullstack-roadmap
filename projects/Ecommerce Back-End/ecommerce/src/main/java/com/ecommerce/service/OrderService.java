@@ -3,6 +3,8 @@ package com.ecommerce.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.ecommerce.Dto.ShippingDetailsDTO;
+import com.ecommerce.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.jaxb.SpringDataJaxb.OrderDto;
 import org.springframework.stereotype.Service;
@@ -15,11 +17,6 @@ import com.ecommerce.config.JwtAuthenticationEntryPoint;
 import com.ecommerce.config.JwtAuthenticationFilter;
 import com.ecommerce.controller.AuthController;
 import com.ecommerce.controller.OrderController;
-import com.ecommerce.model.Order;
-import com.ecommerce.model.OrderItem;
-import com.ecommerce.model.OrderStatus;
-import com.ecommerce.model.Payment;
-import com.ecommerce.model.User;
 import com.ecommerce.repository.OrderRepo;
 import com.ecommerce.repository.UserRepo;
 
@@ -128,6 +125,12 @@ public class OrderService {
         return orderDTOs;
     }
 
+    public List<OrderDTO> getByUserId(Long id) {
+        List<Order> orders = orderRepo.findByUserId(id);
+
+        return orders.stream().map(this::convertToDTO).collect(Collectors.toList());
+    }
+
     
     
 
@@ -137,7 +140,14 @@ public class OrderService {
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
 
-        return new OrderDTO(order.getId() , order.getTotalPrice(), order.getStatus() ,order.getOrderDate() , orderItemDTOs , order.getUser().getId() , order.getPayment().getId());
+        return new OrderDTO(order.getId() , order.getTotalPrice(), order.getStatus() ,order.getOrderDate() , orderItemDTOs , order.getUser().getId() , order.getUser().getUsername() , order.getUser().getEmail() , order.getPayment().getId() , convertShippingToDTO(order.getShippingDetails()));
+    }
+
+    // ✅ Convert ShippingDetails entity to ShippingDetailsDTO
+    private ShippingDetailsDTO convertShippingToDTO(ShippingDetails shippingDetails) {
+        return new ShippingDetailsDTO(shippingDetails.getId() , shippingDetails.getAddress() , shippingDetails.getCity() ,
+                shippingDetails.getCountry() , shippingDetails.getDelivered_at() , shippingDetails.getEstimated_delivery_date() ,
+                shippingDetails.getPostal_code() , shippingDetails.getRecipient_phone() );
     }
 
     // ✅ Convert OrderItem entity to OrderItemDTO
@@ -149,7 +159,12 @@ public class OrderService {
                 orderItem.getPrice()
         );
     }
-    
+
+
+
+    public Long getOrdersCount() {
+        return orderRepo.count();
+    }
     
     
 
