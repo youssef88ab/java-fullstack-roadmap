@@ -1,10 +1,13 @@
 import "./App.css";
-import Login from "./components/Login";
+import 'flowbite';
+import Dashboard from "./pages/Dashboard";
+
+
 
 function App() {
   return (
     <div>
-      <Login></Login>
+      <Dashboard></Dashboard>
     </div>
   );
 }
